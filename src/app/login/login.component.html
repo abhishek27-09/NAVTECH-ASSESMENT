@@ -1,0 +1,65 @@
+<section class="container-fluid setting">
+  <div class="card">
+    <div class="card-header"><h2 class="text-center">LOGIN FORM</h2></div>
+    <div class="card-body">
+      <form [formGroup]="LoginForm" (ngSubmit)="submit()" novalidate>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label
+              >Email<sup class="required" title="Required">*</sup></mat-label
+            >
+            <input
+              matInput
+              placeholder="Email"
+              type="email"
+              autocomplete="off"
+              formControlName="Email"
+            />
+            <mat-hint>Hint: user@user.com</mat-hint>
+            <mat-error *ngIf="LoginForm.controls['Email'].hasError('required')">
+              <sup class="required" title="Required">*</sup>Field is Required!
+            </mat-error>
+            <mat-error *ngIf="LoginForm.controls['Email'].hasError('email')">
+              <sup class="required" title="Required">*</sup>Email must be a
+              valid email
+            </mat-error>
+            <!-- <mat-error *ngIf="LoginForm.controls['Email'].hasError('pattern')">
+              <sup class="required" title="Required">*</sup> Email is invalid.
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label
+              >Password<sup class="required" title="Required">*</sup></mat-label
+            >
+            <input
+              matInput
+              placeholder="Password"
+              type="Password"
+              autocomplete="off"
+              formControlName="Password"
+              [type]="hide ? 'Password' : 'text'"
+            />
+            <mat-hint>Hint: user@123</mat-hint>
+            <mat-icon matSuffix (click)="myHide()">
+              {{ hide ? "visibility_off" : "visibility" }}</mat-icon
+            >
+            <mat-error
+              *ngIf="LoginForm.controls['Password'].hasError('required')"
+            >
+              <sup class="required" title="Required">*</sup>Field is Required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Remember Me</label
+          >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>

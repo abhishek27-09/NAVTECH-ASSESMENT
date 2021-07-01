@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.setting {
+  max-width: 600px;
+  margin: 120px auto;
+  max-height: 600px;
+}
+
+.required {
+  color: red;
+}
+
+.Edit-btn {
+  cursor: pointer;
+  color: rgb(1, 173, 1);
+  background: transparent;
+  box-shadow: none;
+}
+
+.Remove-btn {
+  cursor: pointer;
+  color: rgb(214, 19, 19);
+  background: transparent;
+  box-shadow: none;
+}
+
