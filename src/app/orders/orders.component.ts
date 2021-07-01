@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import * as $ from 'jquery';
 declare var $: any;
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-orders',
@@ -45,6 +45,22 @@ export class OrdersComponent implements OnInit {
 
         $('#orderNumber').val(data[0]);
       });
+    });
+  }
+
+  delete() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      }
     });
   }
 }
