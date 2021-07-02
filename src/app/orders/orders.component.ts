@@ -2,17 +2,28 @@ import { Component, OnInit } from '@angular/core';
 declare var $: any;
 import Swal from 'sweetalert2';
 
+export interface Order {
+  id?: number;
+  ordernumber?: number;
+  orderduedate?: string;
+  CustomerBuyerName?: string;
+  CustomerAddress?: string;
+  CustomerPhone?: number;
+  OrderTotal?: number;
+}
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
+  // hardcoded data for input
   fields = [
     {
       id: 1,
       ordernumber: 123,
-      orderduedate: '10-02-2021',
+      orderduedate: '10/02/2021',
       CustomerBuyerName: 'bunny',
       CustomerAddress: 'hyderabad',
       CustomerPhone: 9874563210,
@@ -21,34 +32,47 @@ export class OrdersComponent implements OnInit {
     {
       id: 2,
       ordernumber: 987,
-      orderduedate: '10-02-2021',
+      orderduedate: '07/21/2021',
       CustomerBuyerName: 'sunny',
       CustomerAddress: 'mumbai',
       CustomerPhone: 9632145870,
       OrderTotal: 40000,
     },
   ];
+
+  set: any;
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  editData() {
-    $(document).ready(() => {
-      $('.editbtn').ready(() => {
-        const $tr = $(this).closest('tr');
-        var data = $tr['S.fn.init']
-          .children('td')
-          .map(() => {
-            return $(this).text();
-          })
-          .get();
-
-        $('#orderNumber').val(data[0]);
-      });
-    });
+  // to edit data and fill in fields
+  editData(value: Order) {
+    console.log('ata', value.orderduedate);
+    this.set = value;
+    document
+      .getElementById('ordernumber')
+      ?.setAttribute('value', this.set.ordernumber);
+    document
+      .getElementById('duedate')
+      ?.setAttribute('value', this.set.orderduedate);
+    document
+      .getElementById('customername')
+      ?.setAttribute('value', this.set.CustomerBuyerName);
+    document
+      .getElementById('custumeraddress')
+      ?.setAttribute('value', this.set.CustomerAddress);
+    document
+      .getElementById('customerphone')
+      ?.setAttribute('value', this.set.CustomerPhone);
+    document
+      .getElementById('ordertotal')
+      ?.setAttribute('value', this.set.OrderTotal);
   }
 
+  // to delete data
   delete() {
+    // added seetalerts
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
