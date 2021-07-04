@@ -25,6 +25,13 @@ mat-form-field {
   color: red;
 }
 
+.View-btn {
+  cursor: pointer;
+  color: rgb(1, 110, 173);
+  background: transparent;
+  box-shadow: none;
+}
+
 .Edit-btn {
   cursor: pointer;
   color: rgb(1, 173, 1);
@@ -39,6 +46,5 @@ mat-form-field {
   box-shadow: none;
 }
 
-
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
